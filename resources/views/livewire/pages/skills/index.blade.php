@@ -4,23 +4,9 @@
             <h1 class="text-2xl font-bold">Skills</h1>
         </div>
         
-        <div wire:offline wire:transition class="flex container mt-4 text-center">
-            <p class="bg-red-100 text-red-800 px-4 py-2 rounded mb-4">
-                You are offline. Please check your internet connection.
-            </p>
-        </div>
+        <x-offline />
 
-        @if (session()->has('status'))
-            <div 
-                x-data="{ show: true }" 
-                x-init="setTimeout(() => show = false, 3000)" 
-                x-show="show"
-                x-transition 
-                class="bg-green-100 text-green-800 px-4 py-2 rounded mt-4 mb-4"
-            >
-                {{ session('status') }}
-            </div>
-        @endif
+        <x-session-flash />
         
         <div class="flex gap-8">
             <div class="w-2/3 bg-white rounded-xl shadow p-6">
@@ -37,7 +23,10 @@
                             <td class="p-4 font-medium">{{ $skill->name }}</td>
                             <td class="p-4 flex justify-end">
                                 <button wire:click="edit({{ $skill->id }})" class="text-blue-500">Edit</button>
-                                <button wire:click="delete({{ $skill->id }})" class="text-red-500 ml-4">Delete</button>
+                                <button 
+                                    wire:click="delete({{ $skill->id }})" 
+                                    wire:confirm="Are you sure you want to delete this skill?"
+                                    class="text-red-500 ml-4">Delete</button>
                             </td>
                         </tr>
                         @endforeach

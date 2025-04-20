@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RolesAndPermissionsTableSeeder::class,
             SkillSeeder::class,
+            JobPostingSeeder::class,
         ]);
 
         User::create([

@@ -31,7 +31,7 @@ class Index extends Component
 
         $this->reset();
         
-        session()->flash('status', 'Skill added successfully.');
+        session()->flash('message', 'Skill added successfully.');
     }
     
     public function update()
@@ -42,7 +42,7 @@ class Index extends Component
 
         $this->reset();
         
-        session()->flash('status', 'Skill updated successfully.');
+        session()->flash('message', 'Skill updated successfully.');
     }
 
     public function edit(Skill $skill)
@@ -59,7 +59,7 @@ class Index extends Component
         
         $this->reset();
         
-        session()->flash('status', 'Skill deleted successfully.');
+        session()->flash('message', 'Skill deleted successfully.');
     }
     
     #[Computed]
